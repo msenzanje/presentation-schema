@@ -1,0 +1,47 @@
+---
+title: Trading App - Big Picture
+---
+erDiagram
+    CLIENT ||--o{ TRADING_ACCOUNT : "opens"
+    TRADING_ACCOUNT ||--o{ ORDER : "places"
+    INSTRUMENT ||--o{ ORDER : "is bought or sold in"
+    ORDER ||--o{ TRANSACTION : "results in"
+    TRADING_ACCOUNT ||--o{ HOLDING : "owns"
+    INSTRUMENT ||--o{ HOLDING : "is held as"
+    EMPLOYEE }o--o{ TRANSACTION : "views (read-only)"
+
+    CLIENT {
+        string name
+        string email
+        string verification_status
+    }
+    EMPLOYEE {
+        string name
+        string email
+        string department
+    }
+    TRADING_ACCOUNT {
+        string account_number
+        decimal cash_balance
+    }
+    INSTRUMENT {
+        string ticker
+        string name
+        string type
+    }
+    ORDER {
+        string buy_or_sell
+        int quantity
+        string status
+        datetime placed_at
+    }
+    TRANSACTION {
+        decimal price
+        int quantity
+        decimal fees
+        datetime completed_at
+    }
+    HOLDING {
+        int quantity
+        decimal average_cost
+    }
