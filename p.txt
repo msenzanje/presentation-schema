@@ -1,0 +1,36 @@
+Redesign the UI of my trading app’s registration page so it looks elegant, modern, and professional. Keep all existing functionality, form fields, validation logic, and routing intact. Only change the visual design, layout, and styling.
+Color palette
+Background: warm off-white (around 
+#F7F4EC), used for the page and form surfaces, with pure white only for input fields and cards to create subtle depth
+Primary: deep evergreen (around 
+#0F3D2E), used for the primary button, headings, the brand panel, and focus states
+Accent: muted antique gold (around 
+#C9A24B), used sparingly for highlights such as thin dividers, link hover states, small icons, the active step indicator, and a hairline border on key elements. Gold should never dominate; it should feel like a finishing touch.
+Text: dark evergreen-tinted charcoal (around 
+#1C2B25) for body text, and a softer green-gray (around 
+#5F6F67) for helper text and placeholders
+Feedback colors: a muted deep red for errors and the evergreen for success, both with sufficient contrast
+Ensure all text meets WCAG AA contrast (4.5:1 minimum)
+Layout
+Use a two-column split layout on desktop: a left brand panel in dark evergreen with the logo, a short tagline about trading with confidence, and 2 to 3 concise trust points (e.g., “Bank-grade security”, “Regulated and transparent”, “Real-time market data”), each with a thin gold line icon. Place the registration form on the right on the off-white background.
+On mobile, collapse to a single column with a compact evergreen header above the form
+Center the form in a card with a max width of about 440px, generous padding, and soft rounded corners (12 to 16px)
+Use a subtle, low-opacity pattern or gradient on the evergreen panel (such as faint chart lines or a soft radial glow) for depth without clutter
+Typography
+Pair an elegant serif for headings (e.g., Playfair Display or Cormorant Garamond) with a clean sans-serif for body and inputs (e.g., Inter)
+Clear hierarchy: a large heading (“Create your account”), a short supportive subheading, then labels, inputs, and helper text
+Use comfortable line height and consistent spacing on an 8px grid
+Form components
+Inputs: white background, 1px soft green-gray border, 10 to 12px radius, 48px height, visible labels above fields (not placeholder-only). On focus, show an evergreen border with a soft gold-tinted glow ring.
+Password field: show/hide toggle and a slim strength meter that moves from muted red to gold to evergreen
+Primary button: full-width, evergreen background, off-white text, subtle hover lift, and a slight gold underline or glow on hover. Include clear disabled and loading states.
+Secondary options (e.g., “Sign up with Google/Apple”): outlined buttons with evergreen border and text
+Checkbox for terms and conditions styled with an evergreen check; links in evergreen with a gold underline on hover
+A “Already have an account? Log in” line at the bottom, with the link in evergreen
+Inline validation messages that appear below each field, with small icons and gentle transitions
+Polish and interaction
+Soft, layered shadows (never harsh black); thin 1px borders instead of heavy outlines
+Smooth 150 to 250ms transitions on hover, focus, and validation changes
+Visible keyboard focus states and proper aria labels for accessibility
+A small security note near the submit button (lock icon, “Your data is encrypted and protected”) in muted text
+Avoid clutter, neon colors, and gradients that clash with the palette. The overall feel should be calm, trustworthy, and premium, like a private bank rather than a flashy crypto app.
