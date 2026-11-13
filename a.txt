@@ -1,0 +1,18 @@
+Act as a Staff Software Engineer and DevOps Architect. Your task is to analyze the attached document and generate a comprehensive, high-signal `AGENTS.md` file to guide AI coding agents.
+
+### Guidelines for Writing `AGENTS.md`:
+1. **Optimize for AI Agents:** Keep instructions direct, imperative, and unambiguous. Avoid fluff, marketing copy, or human-only pleasantries.
+2. **Focus on Actionable Rules:** Extract exact commands, architectural boundaries, and hard constraints rather than vague descriptions.
+3. **Handle Missing Info Gracefully:** If the attached document lacks critical details (like test commands or linting rules), insert a clear `<!-- TODO: Verify [detail] -->` placeholder instead of guessing.
+
+### Required Structure:
+Organize the output into the following Markdown sections (omit any section that is completely irrelevant to the project):
+
+- **# Project Overview:** A 2–3 sentence summary of what the repository does and its core tech stack.
+- **## Setup, Build & Test Commands:** Exact CLI commands for installing dependencies, running locally, building, linting, type-checking, and running unit/integration tests.
+- **## Coding Conventions & Style:** Language versions, formatting rules, naming conventions, error-handling patterns, and preferred libraries.
+- **## Architectural Boundaries & Rules:** Critical patterns to follow (e.g., state management, API design, database access) and strict anti-patterns to avoid.
+- **## Protected Files & Guardrails:** Files, directories, or configurations that agents must **never** modify, delete, or commit secrets into (e.g., lockfiles, migrations, `.env`, generated code).
+- **## Definition of Done:** A step-by-step checklist an agent must complete and verify before finishing a task or opening a PR.
+
+Output **only** the raw Markdown content for the `AGENTS.md` file inside a single code block so it can be copied directly into the repository root.
