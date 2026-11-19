@@ -1,18 +1,50 @@
-Act as a Staff Software Engineer and DevOps Architect. Your task is to analyze the attached document and generate a comprehensive, high-signal `AGENTS.md` file to guide AI coding agents.
+Implement mock authentication (login and sign-up) for demo purposes. No real
+backend calls should be made; all logic runs client-side.
 
-### Guidelines for Writing `AGENTS.md`:
-1. **Optimize for AI Agents:** Keep instructions direct, imperative, and unambiguous. Avoid fluff, marketing copy, or human-only pleasantries.
-2. **Focus on Actionable Rules:** Extract exact commands, architectural boundaries, and hard constraints rather than vague descriptions.
-3. **Handle Missing Info Gracefully:** If the attached document lacks critical details (like test commands or linting rules), insert a clear `<!-- TODO: Verify [detail] -->` placeholder instead of guessing.
+## Login
+- Create a mock auth service that checks credentials against a hardcoded preset
+  account:
+    - Email: demo@example.com
+    - Password: Demo@1234
+  (Keep these in one config/constants file so they're easy to change.)
+- On valid credentials: store a mock session (e.g. a fake token and user object
+  in localStorage or app state) and navigate to the landing page.
+- On invalid credentials: stay on the login page and show a clear inline error
+  message, e.g. "Incorrect email or password. Please try again." Do not reveal
+  which field was wrong. Clear the error when the user edits either field.
+- Simulate network latency (~600-800ms) with a loading state on the submit
+  button so the demo feels realistic. Disable the button while loading to
+  prevent double submits.
 
-### Required Structure:
-Organize the output into the following Markdown sections (omit any section that is completely irrelevant to the project):
+## Sign-up
+- Validate all fields before submitting (required fields, valid email format,
+  password strength/minimum length, password and confirm-password match, and
+  any other fields in the form). Show field-level error messages next to each
+  invalid input.
+- Once every field passes validation, "create" the account via the mock service
+  (no real call), start a mock session exactly as in a successful login, and
+  navigate to the same landing page.
+- Optionally reject a sign-up using the preset demo email with the message
+  "An account with this email already exists."
 
-- **# Project Overview:** A 2–3 sentence summary of what the repository does and its core tech stack.
-- **## Setup, Build & Test Commands:** Exact CLI commands for installing dependencies, running locally, building, linting, type-checking, and running unit/integration tests.
-- **## Coding Conventions & Style:** Language versions, formatting rules, naming conventions, error-handling patterns, and preferred libraries.
-- **## Architectural Boundaries & Rules:** Critical patterns to follow (e.g., state management, API design, database access) and strict anti-patterns to avoid.
-- **## Protected Files & Guardrails:** Files, directories, or configurations that agents must **never** modify, delete, or commit secrets into (e.g., lockfiles, migrations, `.env`, generated code).
-- **## Definition of Done:** A step-by-step checklist an agent must complete and verify before finishing a task or opening a PR.
+## Shared behavior
+- Both flows must use the same mock auth service and produce the same session
+  shape, so the landing page behaves identically regardless of how the user
+  arrived.
+- Protect the landing page: if there is no mock session, redirect to login.
+- Add a logout action that clears the mock session.
+- Keep the mock layer isolated behind a simple interface (e.g. login(),
+  signUp(), logout()) so it can be swapped for real API calls later without
+  touching the UI components.
+- Include a short comment at the top of the mock service stating it is for
+  demonstration only and must not be used in production.
 
-Output **only** the raw Markdown content for the `AGENTS.md` file inside a single code block so it can be copied directly into the repository root.
+## Acceptance criteria
+1. Logging in with the preset credentials lands on the landing page.
+2. Logging in with any other credentials shows the "incorrect credentials"
+   message and does not navigate.
+3. Completing the sign-up form with valid data navigates to the landing page.
+4. Sign-up with invalid or missing data shows field-level errors and does not
+   navigate.
+5. Refreshing the landing page keeps the user signed in; logging out returns
+   them to the login page.
